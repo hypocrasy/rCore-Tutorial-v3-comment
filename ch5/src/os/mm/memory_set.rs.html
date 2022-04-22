@@ -643,12 +643,12 @@
         }
         <span class="ident">memory_set</span>
     }
-    <span class="doccomment">///Refresh TLB with `fence.vma`</span>
+    <span class="doccomment">///Refresh TLB with `sfence.vma`</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">activate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">let</span> <span class="ident">satp</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">page_table</span>.<span class="ident">token</span>();
         <span class="kw">unsafe</span> {
             <span class="ident">satp::write</span>(<span class="ident">satp</span>);
-            <span class="macro">asm!</span>(<span class="string">&quot;fence.vma&quot;</span>);
+            <span class="macro">asm!</span>(<span class="string">&quot;sfence.vma&quot;</span>);
         }
     }
     <span class="doccomment">///Translate throuth pagetable</span>
